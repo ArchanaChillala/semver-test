@@ -3,14 +3,17 @@ resources:
   - name: repository
     type: git
     source:
-      uri: git@github.com:ArchanaChillala/semver-test.git
-      private_key: ((github-private-key))
+      uri: https://github.com/ArchanaChillala/semver-test.git
+      username: ((username))
+      password: ((password))
 
   - name: version
     type: semver
     source:
       driver: git
-      uri: git@github.com:ArchanaChillala/semver-test.git
+      uri: https://github.com/ArchanaChillala/semver-test.git
+      username: ((username))
+      password: ((password))
       branch: master
       file: version
       private_key: ((github-private-key))
