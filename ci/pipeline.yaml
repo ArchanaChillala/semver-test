@@ -16,7 +16,6 @@ resources:
       password: ((password))
       branch: master
       file: version
-      private_key: ((github-private-key))
       initial_version: 1.1.0
 
 jobs:
@@ -27,3 +26,11 @@ jobs:
     - put: version
       params:
         bump: patch
+
+  - name: bump-minor
+    plan:
+    - get: repository
+      passed: [bump-patch]
+    - put: version
+      params:
+        bump: minor
