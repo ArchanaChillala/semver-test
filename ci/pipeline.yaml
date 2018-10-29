@@ -1,0 +1,25 @@
+---
+resources:
+  - name: repository
+    type: git
+    source:
+      uri: git@github.com:ArchanaChillala/semver-test.git
+      private_key: ((github-private-key))
+
+  - name: version
+    type: semver
+    source:
+      driver: git
+      uri: git@github.com:ArchanaChillala/semver-test.git
+      branch: master
+      file: version
+      private_key: ((github-private-key))
+      initial_version: 0.1.0
+
+jobs:
+  - name: test-build
+    plan:
+    - get: repository
+      trigger: true
+    - task: print
+      file: repository/ci/tasks/print.yaml
